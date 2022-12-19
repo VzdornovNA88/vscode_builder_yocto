@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.183.0/containers/cpp
+{
+	"name": "builder-yocto",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	"runArgs": [
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--privileged",
+		"--net=host"
+	],
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-vscode.hexeditor",
+		"eugenwiens.bitbake",
+		"nordic-semiconductor.nrf-devicetree",
+		"ms-vscode.cpptools",
+		"aaron-bond.better-comments",
+		"hars.cppsnippets",
+		"xaver.clang-format",
+		"mhutchie.git-graph",
+		"donjayamanne.githistory",
+		"eamodio.gitlens",
+		"atlassian.atlascode",
+		"gruntfuggly.todo-tree",
+		"alefragnani.bookmarks",
+		"jolaleye.horizon-theme-vscode",
+		"pkief.material-icon-theme",
+		"pkief.material-product-icons"
+	],
+
+	"mounts": [{ "source": "/home/vzdornovna/yocto-share/docker/builder-yocto/projects", "target": "/projects", "type": "bind" }],
+
+	"shutdownAction": "stopContainer",
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
